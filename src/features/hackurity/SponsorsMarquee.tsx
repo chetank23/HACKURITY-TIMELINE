@@ -5,8 +5,14 @@ export interface Sponsor {
   src: string;
 }
 
-export const SPONSORS: Sponsor[] = [
-  { name: "Bharat Cares", src: "/bharat-cares.png" },
+// Still (static) sponsor
+export const STILL_SPONSOR: Sponsor = {
+  name: "Bharat Cares",
+  src: "/bharat-cares.png",
+};
+
+// Moving (continuously flowing) sponsors
+export const MOVING_SPONSORS: Sponsor[] = [
   { name: "Boston Institute of Analytics", src: "/boston-institute-of-analytics.webp" },
   { name: "Edwise International", src: "/edwise.png" },
   { name: "ISTE", src: "/iste.webp" },
@@ -17,9 +23,9 @@ export const SPONSORS: Sponsor[] = [
 ];
 
 export const SponsorsMarquee = memo(function SponsorsMarquee() {
-  // Duplicate SPONSORS twice per group so each group is ~1600px wide,
-  // preventing any blank space when the track loops at -50%.
-  const groupItems = [...SPONSORS, ...SPONSORS];
+  // Duplicate moving sponsors twice per group so each group is wide enough (~1400px),
+  // ensuring a seamless infinite scroll loop with zero blank spaces.
+  const groupItems = [...MOVING_SPONSORS, ...MOVING_SPONSORS];
 
   return (
     <div className="sponsors-header-container" aria-label="Hackathon Partners">
@@ -29,6 +35,21 @@ export const SponsorsMarquee = memo(function SponsorsMarquee() {
         <span className="sponsors-tagline-sep">//</span>
       </div>
 
+      {/* Still sponsor: Bharat Cares */}
+      <div className="sponsor-still-wrap" title={STILL_SPONSOR.name}>
+        <div className="sponsor-badge sponsor-badge-still">
+          <img
+            src={STILL_SPONSOR.src}
+            alt={STILL_SPONSOR.name}
+            className="sponsor-logo-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <span className="sponsors-still-divider" />
+
+      {/* Continuously moving sponsors */}
       <div className="sponsors-marquee-viewport">
         <div className="sponsors-marquee-track">
           <div className="sponsors-marquee-group">
