@@ -274,6 +274,10 @@ function Landing() {
       <footer className="landing-footer">
         <span>SECURE. BUILD. INNOVATE.</span>
         <span className="landing-sep" />
+        <span className="landing-powered-by">
+          POWERED BY <img src="/bob-logo.png" alt="Bob" className="landing-powered-logo" />
+        </span>
+        <span className="landing-sep" />
         <span>AES-256 ENCRYPTED ENVIRONMENT</span>
         <span className="landing-sep" />
         <span>ALL CHANNELS PROTECTED</span>

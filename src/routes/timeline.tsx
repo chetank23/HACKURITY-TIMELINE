@@ -127,6 +127,10 @@ function TimelinePage() {
           </div>
           <h1>{event.name}</h1>
           <p className="event-subtitle">24-HOUR CYBERSECURITY HACKATHON</p>
+          <div className="event-powered-by">
+            <span className="powered-by-text">POWERED BY</span>
+            <img src="/bob-logo.png" alt="Bob Logo" className="powered-by-logo" />
+          </div>
           <div className="countdown" role="timer" aria-label={`${formatTime(remaining)} remaining`}>
             {formatTime(remaining)
               .split(":")
