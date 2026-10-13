@@ -116,21 +116,23 @@ function TimelinePage() {
         <div className="right-coordinate">
           <Radio size={13} /> LIVE SIMULATION <span>ENCRYPTED ENVIRONMENT</span>
         </div>
-        <section
-          className={`countdown-center ${complete ? "event-complete" : ""}`}
-          aria-label="Hackathon countdown"
-        >
+        <div className="event-title-zone">
           <div className="event-eyebrow">
             <span />
             24 HOURS. ONE MISSION.
             <span />
           </div>
-          <h1>{event.name}</h1>
+          <h1 className="cyber-title">{event.name}</h1>
           <p className="event-subtitle">24-HOUR CYBERSECURITY HACKATHON</p>
           <div className="event-powered-by">
             <span className="powered-by-text">POWERED BY</span>
-            <img src="/bob-logo.png" alt="Bob Logo" className="powered-by-logo" />
+            <img src="/bob-logo.png" alt="IBM Bob" className="powered-by-logo" />
           </div>
+        </div>
+        <section
+          className={`countdown-center ${complete ? "event-complete" : ""}`}
+          aria-label="Hackathon countdown"
+        >
           <div className="countdown" role="timer" aria-label={`${formatTime(remaining)} remaining`}>
             {formatTime(remaining)
               .split(":")

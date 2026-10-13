@@ -220,9 +220,18 @@
   opacity: 0.55;
 }
 
+.event-title-zone {
+  position: absolute;
+  top: 96px;
+  left: 360px;
+  width: 1200px;
+  text-align: center;
+  z-index: 4;
+}
+
 .countdown-center {
   position: absolute;
-  top: 285px;
+  top: 415px;
   left: 460px;
   width: 1000px;
   text-align: center;
@@ -231,66 +240,82 @@
 
 .event-eyebrow {
   font: 10px var(--font-mono);
+  letter-spacing: 0.16em;
   color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 13px;
-  margin-bottom: 23px;
+  margin-bottom: 10px;
 }
 
 .event-eyebrow > span {
-  width: 26px;
+  width: 32px;
   height: 1px;
   background: var(--primary);
-  opacity: 0.6;
+  opacity: 0.7;
+  box-shadow: 0 0 6px var(--primary);
 }
 
-h1 {
-  font-size: 49px;
-  font-weight: 700;
-  line-height: 1.15;
+.cyber-title {
+  font-family: "Orbitron", var(--font-mono);
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
   margin: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 40%, oklch(0.854 0.218 123) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px oklch(0.854 0.218 123 / 0.6))
+    drop-shadow(0 0 45px oklch(0.854 0.218 123 / 0.25));
   overflow-wrap: anywhere;
 }
 
 .event-subtitle {
   font: 11px var(--font-mono);
-  color: var(--muted-foreground);
-  margin: 14px 0 10px;
+  letter-spacing: 0.2em;
+  color: oklch(0.854 0.218 123 / 0.75);
+  margin: 8px 0 12px;
+  text-transform: uppercase;
 }
 
 .event-powered-by {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 0 auto 24px;
-  padding: 4px 14px;
-  background: oklch(0.16 0.012 145 / 0.7);
-  border: 1px solid oklch(0.854 0.218 123 / 0.25);
+  gap: 14px;
+  margin: 0 auto;
+  padding: 6px 24px 6px 20px;
+  background: oklch(0.14 0.015 145 / 0.75);
+  border: 1px solid oklch(0.854 0.218 123 / 0.35);
   border-radius: 9999px;
-  box-shadow: 0 0 14px oklch(0.854 0.218 123 / 0.1);
+  box-shadow:
+    0 0 20px oklch(0.854 0.218 123 / 0.15),
+    inset 0 0 12px oklch(0.854 0.218 123 / 0.08);
+  backdrop-filter: blur(8px);
   vertical-align: middle;
 }
 
 .powered-by-text {
-  font: 9px var(--font-mono);
-  letter-spacing: 0.14em;
-  color: var(--muted-foreground);
-  font-weight: 500;
+  font: 11px var(--font-mono);
+  letter-spacing: 0.22em;
+  color: oklch(0.854 0.218 123);
+  font-weight: 600;
 }
 
 .powered-by-logo {
-  height: 24px;
+  height: 48px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px oklch(0.854 0.218 123 / 0.35));
-  transition: transform 0.2s ease;
+  filter: drop-shadow(0 0 10px oklch(0.854 0.218 123 / 0.5));
+  transition: transform 0.25s ease;
 }
 
 .event-powered-by:hover .powered-by-logo {
-  transform: scale(1.12);
+  transform: scale(1.15) rotate(-3deg);
 }
 
 .countdown {
