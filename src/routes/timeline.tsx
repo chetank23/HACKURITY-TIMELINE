@@ -101,6 +101,60 @@ function TimelinePage() {
       className={`installation ${presentation ? "presentation-mode" : ""} ${event.reducedMotion ? "reduced-motion" : ""}`}
     >
       <div ref={stage} className="cyber-stage">
+        {/* Pixelate SVG filters for countdown numbers */}
+        <svg
+          className="pixel-filter-defs"
+          style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }}
+          aria-hidden="true"
+        >
+          <defs>
+            <filter id="digit-pixel-heavy" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.25 0.15"
+                numOctaves="2"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="14"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+            <filter id="digit-pixel-med" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.35 0.2"
+                numOctaves="1"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="7"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+            <filter id="digit-pixel-light" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.45 0.3"
+                numOctaves="1"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="3"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
         <NetworkScene event={event} complete={complete} />
         <div className="scene-vignette" />
         <header className="scene-header">
@@ -140,8 +194,12 @@ function TimelinePage() {
               .split(":")
               .map((digits, i) => (
                 <span className="timer-group" key={i}>
-                  <span key={digits} className="timer-digits">
-                    {digits}
+                  <span className="timer-digits">
+                    {digits.split("").map((char, charIdx) => (
+                      <span key={`${charIdx}-${char}`} className="digit-char">
+                        {char}
+                      </span>
+                    ))}
                   </span>
                   <span className="timer-label">{["HOURS", "MINUTES", "SECONDS"][i]}</span>
                   {i < 2 && <span className="timer-colon">:</span>}

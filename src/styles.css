@@ -478,13 +478,45 @@
 }
 
 .timer-digits {
+  display: inline-flex;
+  justify-content: center;
   font-family: "Orbitron", var(--font-mono);
   font-size: 144px;
   line-height: 1.15;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-shadow: var(--timer-shadow);
-  animation: digit-settle 0.35s ease-out;
+}
+
+.digit-char {
+  display: inline-block;
+  min-width: 0.58em;
+  text-align: center;
+  position: relative;
+  animation: digit-pixelate 0.35s steps(4, jump-none);
+  will-change: transform, filter;
+}
+
+.digit-char::after {
+  content: "";
+  position: absolute;
+  inset: -6px -3px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35) 50%, transparent 50%);
+  background-size: 4px 4px;
+  pointer-events: none;
+  opacity: 0;
+  animation: digit-pixel-grid 0.35s steps(2, jump-none);
+}
+
+@keyframes digit-pixel-grid {
+  0%, 65% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .timer-colon {
@@ -1026,6 +1058,47 @@
   font-size: 12px;
 }
 
+@keyframes digit-pixelate {
+  0% {
+    filter: url(#digit-pixel-heavy);
+    transform: scale(1.025) translate(-1px, 1px);
+    opacity: 0.82;
+    text-shadow:
+      -3px 0 0 oklch(0.854 0.218 123 / 0.85),
+      3px 0 0 rgba(0, 240, 255, 0.8),
+      0 0 20px var(--primary);
+  }
+  28% {
+    filter: url(#digit-pixel-med);
+    transform: scale(0.99) translate(1px, -1px);
+    opacity: 0.92;
+    text-shadow:
+      2px -1px 0 oklch(0.854 0.218 123 / 0.75),
+      -2px 1px 0 rgba(0, 240, 255, 0.7),
+      0 0 12px var(--primary);
+  }
+  60% {
+    filter: url(#digit-pixel-light);
+    transform: scale(1.005) translate(0, 0);
+    opacity: 0.98;
+    text-shadow:
+      1px 0 0 oklch(0.854 0.218 123 / 0.5),
+      -1px 0 0 rgba(0, 240, 255, 0.5);
+  }
+  85% {
+    filter: none;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 0 0 8px oklch(0.854 0.218 123 / 0.3);
+  }
+  100% {
+    filter: none;
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: var(--timer-shadow);
+  }
+}
+
 @keyframes digit-settle {
   from {
     opacity: 0.75;
@@ -1036,6 +1109,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.reduced-motion .digit-char,
+.reduced-motion .digit-char::after {
+  animation: none !important;
+  filter: none !important;
 }
 
 @keyframes node-breathe {
