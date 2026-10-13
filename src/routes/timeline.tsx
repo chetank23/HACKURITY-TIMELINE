@@ -16,6 +16,7 @@ import { NetworkScene } from "@/features/hackurity/NetworkScene";
 import { Timeline } from "@/features/hackurity/Timeline";
 import { Terminal } from "@/features/hackurity/Terminal";
 import { AdminPanel, toggleFullscreen } from "@/features/hackurity/AdminPanel";
+import { SponsorsMarquee } from "@/features/hackurity/SponsorsMarquee";
 import { useEvent } from "@/features/hackurity/use-event";
 import { DURATION, formatTime, remainingTime } from "@/features/hackurity/event";
 
@@ -109,6 +110,7 @@ function TimelinePage() {
             <span className="status-separator" />
             24-HOUR HACKATHON
           </div>
+          <SponsorsMarquee />
         </header>
         <div className="left-coordinate">
           NETWORK OPERATIONS <span>SECTOR 01 / SECURE PERIMETER</span>
