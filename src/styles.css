@@ -121,7 +121,7 @@
 
 .scene-header {
   position: absolute;
-  top: 48px;
+  top: 42px;
   left: 76px;
   right: 76px;
   display: flex;
@@ -198,7 +198,7 @@
   gap: 14px;
   flex: 1;
   min-width: 0;
-  height: 38px;
+  height: 48px;
   padding: 0;
 }
 
@@ -207,16 +207,16 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-  height: 32px;
-  font: 11px var(--font-mono);
+  height: 40px;
+  font: 12px var(--font-mono);
   font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--primary);
   text-shadow: 0 0 8px oklch(0.854 0.218 123 / 0.35);
   background: oklch(0.854 0.218 123 / 0.08);
   border: 1px solid oklch(0.854 0.218 123 / 0.3);
-  padding: 0 12px;
-  border-radius: 4px;
+  padding: 0 14px;
+  border-radius: 6px;
   user-select: none;
 }
 
@@ -257,10 +257,10 @@
 
 .sponsors-still-divider {
   width: 1px;
-  height: 18px;
+  height: 24px;
   background: var(--border);
   flex-shrink: 0;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 .sponsors-marquee-viewport {
@@ -270,7 +270,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 38px;
+  height: 48px;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -324,14 +324,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  min-width: 58px;
-  max-width: 115px;
-  padding: 3px 10px;
+  height: 40px;
+  min-width: 68px;
+  max-width: 135px;
+  padding: 4px 12px;
   background: #ffffff;
   border: 1px solid oklch(0.28 0.027 130 / 0.5);
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   flex-shrink: 0;
   cursor: pointer;
@@ -344,8 +344,8 @@
 }
 
 .sponsor-logo-img {
-  height: 24px;
-  max-width: 95px;
+  height: 30px;
+  max-width: 115px;
   width: auto;
   object-fit: contain;
   display: block;
